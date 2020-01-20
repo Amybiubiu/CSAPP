@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="request">测试摇一摇1g：</p>
+<p id="demo2">测试摇一摇2f：</p>
+<p id="demo3">测试摇一摇3f：</p>
+<!-- <button onclick="testshake()">试一下</button> -->
+<script>
+    alert("test");
+  if(window.DeviceOrientationEvent){
+        alert("ceshi2");}
+    function requestT () {
+        alert("abc");
+      if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function') {
+          
+          DeviceMotionEvent.requestPermission()
+          .then(response => {
+	alert('Orientation tracking '+ response);
+          
+            if (response == 'granted') {
+              window.addEventListener('devicemotion', (e) => {
+               document.getElementById('request').style.visibility='hidden';
+              })
+            }
+          })
+      .catch(console.error)
+      }else {
+          alert('DeviceMotionEvent is not defined');
+      }
+
+  }
+  requestT();
+</script>
+</body>
+</html>
